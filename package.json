@@ -1,0 +1,38 @@
+{
+  "name": "nextjs",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "stripe:listen": "stripe listen --forward-to http://localhost:3000/api/stripe/webhook",
+    "supabase:gen-types": "node ./scripts/supabase-gen-types.js",
+    "supabase:sync-staging-to-production": "./scripts/supabase-sync-schema.js staging production",
+    "supabase:sync-production-to-staging": "./scripts/supabase-sync-schema.js production staging"
+  },
+  "dependencies": {
+    "@google-analytics/data": "^4.1.0",
+    "@supabase/ssr": "^0.0.9",
+    "@supabase/supabase-js": "^2.38.4",
+    "next": "14.0.3",
+    "react": "^18",
+    "react-dom": "^18",
+    "stripe": "^14.4.0",
+    "use-debounce": "^10.0.0",
+    "zod": "^3.22.4",
+    "zod-form-data": "^2.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.0.1",
+    "eslint": "^8",
+    "eslint-config-next": "14.0.3",
+    "postcss": "^8",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5"
+  }
+}
