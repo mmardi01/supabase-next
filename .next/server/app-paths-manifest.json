@@ -1,1 +1,8 @@
-{}
+{
+  "/not-found": "app/not-found.js",
+  "/signin/page": "app/signin/page.js",
+  "/verify/page": "app/verify/page.js",
+  "/page": "app/page.js",
+  "/createbusiness/page": "app/createbusiness/page.js",
+  "/api/supabase/auth/callback/link-malformed/page": "app/api/supabase/auth/callback/link-malformed/page.js"
+}
