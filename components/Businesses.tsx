@@ -11,24 +11,32 @@ export type Business = {
 };
 
 export default function Businesses() {
-  const [businesses, setBisness] = useState<Business[] | null>(null);
+  const [businesses, setBusiness] = useState<Business[] | null>(null);
+  const [isLoading, updateIsLoading] = useState(true);
   const getData = async () => {
     let { data: business, error } = await supabaseForClientComponent
       .from("business")
       .select("*");
-      console.log(business);
-    setBisness(business);
+    setBusiness(business);
+    updateIsLoading(false);
   };
 
   useEffect(() => {
     getData();
-  },[]);
+  }, []);
 
   return (
     <div className="w-[80%]">
-      {businesses?.map((business, index) => (
-        <Business data={business} key={index} />
-      ))}
+      {!isLoading ? (
+        businesses?.length ?
+        businesses?.map((business, index) => (
+          <Business data={business} key={index} />
+        ))
+        :
+        <h1 className="text-center">No businesses yet</h1>
+      ) : (
+        <p className="text-center">loading...</p>
+      )}
     </div>
   );
 }

@@ -736,6 +736,10 @@ video {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
 }
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
 .text-center {
   text-align: center;
 }
@@ -760,6 +764,10 @@ video {
 .text-\[\#ff2c2c\] {
   --tw-text-opacity: 1;
   color: rgb(255 44 44 / var(--tw-text-opacity));
+}
+.text-red-500 {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity));
 }
 .outline-none {
   outline: 2px solid transparent;

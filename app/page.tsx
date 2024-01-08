@@ -6,15 +6,11 @@ import { beforeEach } from "node:test";
 import Businesses from "@/components/Businesses";
 import Link from "next/link";
 
-
-
 export default function Page() {
   const router = useRouter();
   const getData = async () => {
     const user = await supabaseForClientComponent.auth.getUser();
     if (!user.data.user) router.push("/signin");
-
-    
   };
 
   useEffect(() => {
@@ -23,7 +19,10 @@ export default function Page() {
 
   return (
     <div className="w-full flex flex-col items-center p-10 gap-10">
-      <Link href={'/createbusiness'} className="w-[250px]  bg-green-700 rounded-md text-center py-3">
+      <Link
+        href={"/createbusiness"}
+        className="w-[250px]  bg-green-700 rounded-md text-center py-3"
+      >
         Create Business
       </Link>
       <Businesses />
