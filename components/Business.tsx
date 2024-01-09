@@ -14,6 +14,8 @@ export default function Business({ data }: { data: Business }) {
       data: { user },
       error,
     } = await supabaseForClientComponent.auth.getUser();
+
+      // supabaseForClientComponent.auth.
     if (data.user_id === user?.id) setOwner(true);
   };
   useEffect(() => {

@@ -13,7 +13,10 @@ export default function Edit({
   const [name, setName] = useState(business.name);
   const [error, setError] = useState('');
   const handleSave = async () => {
-
+    if (name.length === 0) {
+      setError('business name is empty');
+      return;
+    }
     const { data, error } = await supabaseForClientComponent
     .from('business')
     .update({ name: name })
@@ -32,9 +35,9 @@ export default function Edit({
       <div className="w-[400px] h-[500px] flex flex-col  items-center justify-center gap-4 bg-zinc-950 rounded-lg">
         <h1>Edit "{business.name}" business</h1>
         <input onChange={(e) => setName(e.target.value)} value={name} type="text" className="w-[80%] bg-transparent outline-none px-5 border border-gray-500 h-[50px] rounded-lg" />
+        <p className="text-red-600">{error}</p>
         <button className="w-[80%] bg-green-700 h-[50px] rounded-lg" onClick={handleSave}>Save</button>
         <button className="w-[80%] bg-gray-600 h-[50px] rounded-lg" onClick={() => setDisplayEdit(false)}>Cancel</button>
-        <p>{error}</p>
       </div>
     </div>
   );
