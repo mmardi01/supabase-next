@@ -4,12 +4,12 @@ import React, { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 
 function page() {
-  const [name, setName] = useState("");
+  const [bname, setName] = useState('');
   const router = useRouter();
   const [formError, setError] = useState("");
   async function createBusiness(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (name.length === 0) {
+    if (bname.length === 0) {
       setError("business name is empty");
       return;
     }
@@ -19,8 +19,7 @@ function page() {
     } = await supabaseForClientComponent.auth.getUser();
     if (error) router.push("/");
     const data = await supabaseForClientComponent
-      .from("business")
-      .insert([{ name: name, user_id: user?.id, email: user?.email }])
+      .from("business").insert({ name: bname , user_id: user?.id, email: user?.email })
       .select();
     if (data.error) setError(data.error.message);
     router.push("/");

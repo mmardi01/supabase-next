@@ -26,17 +26,18 @@ export default function Businesses() {
   }, []);
 
   return (
-    <div className="w-[80%]">
+    <div className="w-[80%] flex flex-col gap-4">
       {!isLoading ? (
         businesses?.length ?
         businesses?.map((business, index) => (
           <Business data={business} key={index} />
-        ))
+        )).reverse()
         :
         <h1 className="text-center">No businesses yet</h1>
       ) : (
         <p className="text-center">loading...</p>
       )}
+     
     </div>
   );
 }
