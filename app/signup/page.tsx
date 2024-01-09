@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { supabaseForClientComponent } from "@/lib/supabase.client";
 import { redirect, useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { env } from "process";
 
 type Formvalues = {
   email: string;
@@ -21,7 +22,7 @@ export default function page() {
       email: data.email,
       password: data.password,
       options: {
-        emailRedirectTo: `${location.origin}/api/supabase/auth/callback/`,
+        emailRedirectTo: `https://supabase-next-smoky.vercel.app//api/supabase/auth/callback/`,
       },
     });
     if (res.error) setError(res.error.message);
