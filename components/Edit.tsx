@@ -19,7 +19,6 @@ export default function Edit({
     .update({ name: name })
     .eq('id', business.id)
     .select()
-    console.log(data, error);
     if(error)
       setError(error.message);
     else {

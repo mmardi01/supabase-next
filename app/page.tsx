@@ -11,8 +11,12 @@ export default function Page() {
   const [isLoding, setIsLoading] = useState(true);
   const getData = async () => {
     const user = await supabaseForClientComponent.auth.getUser();
-    setIsLoading(false);
-    if (!user.data.user) router.push("/signin");
+    if (!user.data.user){
+      router.push("/signin");
+    } 
+    else {
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
