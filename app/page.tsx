@@ -8,8 +8,10 @@ import Link from "next/link";
 
 export default function Page() {
   const router = useRouter();
+  const [isLoding, setIsLoading] = useState(true);
   const getData = async () => {
     const user = await supabaseForClientComponent.auth.getUser();
+    setIsLoading(false);
     if (!user.data.user) router.push("/signin");
   };
 
@@ -19,13 +21,19 @@ export default function Page() {
 
   return (
     <div className="w-full flex flex-col items-center p-10 gap-10">
-      <Link
-        href={"/createbusiness"}
-        className="w-[250px]  bg-green-700 rounded-md text-center py-3"
-      >
-        Create Business
-      </Link>
-      <Businesses />
+      {isLoding ? (
+        <p>Loading...</p>
+      ) : (
+        <>
+          <Link
+            href={"/createbusiness"}
+            className="w-[250px]  bg-green-700 rounded-md text-center py-3"
+          >
+            Create Business
+          </Link>
+          <Businesses />
+        </>
+      )}
     </div>
   );
 }
