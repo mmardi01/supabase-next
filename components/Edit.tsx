@@ -1,6 +1,7 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { Business } from "./Businesses";
 import { supabaseForClientComponent } from "@/lib/supabase.client";
+import { useRouter } from "next/navigation";
 
 export default function Edit({
   setDisplayEdit,
@@ -12,6 +13,8 @@ export default function Edit({
 
   const [name, setName] = useState(business.name);
   const [error, setError] = useState('');
+  const router = useRouter()
+
   const handleSave = async () => {
     if (name.length === 0) {
       setError('business name is empty');
@@ -25,7 +28,7 @@ export default function Edit({
     if(error)
       setError(error.message);
     else {
-      setDisplayEdit(false)
+      location.reload();
     }
             
   }

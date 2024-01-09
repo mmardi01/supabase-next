@@ -21,7 +21,10 @@ function page() {
     const data = await supabaseForClientComponent
       .from("business").insert({ name: bname , user_id: user?.id, email: user?.email })
       .select();
-    if (data.error) setError(data.error.message);
+    if (data.error) {
+      setError(data.error.message);
+      return;
+    }
     router.push("/");
   }
   return (

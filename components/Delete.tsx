@@ -2,6 +2,7 @@ import React, { Dispatch, SetStateAction, useState } from "react";
 import { Business } from "./Businesses";
 import { supabaseForClientComponent } from "@/lib/supabase.client";
 import { date } from "zod";
+import { useRouter } from "next/navigation";
 
 
 export default function Delete({
@@ -11,6 +12,7 @@ export default function Delete({
   setDisplayDelete: Dispatch<SetStateAction<boolean>>;
   business: Business;
 }) {
+  const router = useRouter()
   const [error, setError] = useState("");
   const handleDelete = async () => {
     const { error } = await supabaseForClientComponent
@@ -19,8 +21,9 @@ export default function Delete({
       .eq("id", business.id);
       if (error)
         setError(error.message);
-      else 
-        setDisplayDelete(false);
+      else {
+        location.reload();
+      }
   };
 
   return (
